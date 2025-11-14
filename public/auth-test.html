@@ -568,12 +568,19 @@
             updateMetrics();
         }
 
+        // ⚠️ SECURITY WARNING: Never hardcode secrets in public files!
         // Initialize environment variables for testing
+        // These should be set via environment variables or injected at build time
         window.env = {
-            NEXT_PUBLIC_SUPABASE_URL: 'https://pedasqlddhrqvbwdlzge.supabase.co',
-            NEXT_PUBLIC_SUPABASE_ANON_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBlZGFzcWxkZGhycXZid2RsemdlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMwNjE3ODIsImV4cCI6MjA2ODYzNzc4Mn0.G2zTfu-4vVO7R86rU8KJ2xKrjGOCLus2Clm0ZobZYBM',
-            NEXT_PUBLIC_PRODUCTION_DOMAIN: 'https://belugagithubv2025machineloopscorpsf-gold.vercel.app'
+            NEXT_PUBLIC_SUPABASE_URL: window.NEXT_PUBLIC_SUPABASE_URL || process?.env?.NEXT_PUBLIC_SUPABASE_URL || '',
+            NEXT_PUBLIC_SUPABASE_ANON_KEY: window.NEXT_PUBLIC_SUPABASE_ANON_KEY || process?.env?.NEXT_PUBLIC_SUPABASE_ANON_KEY || '',
+            NEXT_PUBLIC_PRODUCTION_DOMAIN: window.NEXT_PUBLIC_PRODUCTION_DOMAIN || process?.env?.NEXT_PUBLIC_PRODUCTION_DOMAIN || ''
         };
+        
+        // Validate that secrets are not hardcoded
+        if (!window.env.NEXT_PUBLIC_SUPABASE_URL || !window.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+            console.warn('⚠️ WARNING: Supabase credentials not configured. Please set environment variables.');
+        }
 
         // Auto-run environment test on page load
         document.addEventListener('DOMContentLoaded', () => {

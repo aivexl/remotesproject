@@ -30,7 +30,8 @@ echo "NODE_ENV: $NODE_ENV"
 #### **1.2 Supabase Connectivity Test**
 ```bash
 # Test Supabase endpoint accessibility
-curl -I "https://pedasqlddhrqvbwdlzge.supabase.co/rest/v1/"
+# ⚠️ Replace YOUR_PROJECT_ID with your actual Supabase project ID
+curl -I "https://YOUR_PROJECT_ID.supabase.co/rest/v1/"
 ```
 
 **Expected Response:**
@@ -58,8 +59,9 @@ curl "https://belugagithubv2025machineloopscorpsf-gold.vercel.app/api/auth/healt
 **File to Create/Update:** `.env.local`
 ```env
 # CRITICAL: PRODUCTION SUPABASE CONFIGURATION
-NEXT_PUBLIC_SUPABASE_URL=https://pedasqlddhrqvbwdlzge.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBlZGFzcWxkZGhycXZid2RsemdlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMwNjE3ODIsImV4cCI6MjA2ODYzNzc4Mn0.G2zTfu-4vVO7R86rU8KJ2xKrjGOCLus2Clm0ZobZYBM
+# ⚠️ SECURITY: Replace with your actual Supabase credentials from Supabase Dashboard
+NEXT_PUBLIC_SUPABASE_URL=https://YOUR_PROJECT_ID.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key_here
 
 # PRODUCTION DOMAIN CONFIGURATION
 NEXT_PUBLIC_PRODUCTION_DOMAIN=https://belugagithubv2025machineloopscorpsf-gold.vercel.app
@@ -81,7 +83,7 @@ NEXT_PUBLIC_APP_ENV=production
 
 #### **2.3 Supabase Project Configuration**
 **Action Required:** Update Supabase Dashboard
-1. Go to [Supabase Dashboard](https://supabase.com/dashboard/project/pedasqlddhrqvbwdlzge/settings/api)
+1. Go to [Supabase Dashboard](https://supabase.com/dashboard/project/YOUR_PROJECT_ID/settings/api)
 2. **Authentication > Settings:**
    - Site URL: `https://belugagithubv2025machineloopscorpsf-gold.vercel.app`
    - Redirect URLs:

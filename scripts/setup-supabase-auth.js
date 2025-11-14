@@ -16,11 +16,22 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Your Supabase Configuration
+// ⚠️ SECURITY: Never hardcode secrets! Use environment variables instead.
 const SUPABASE_CONFIG = {
-  URL: 'https://pedasqlddhrqvbwdlzge.supabase.co',
-  ANON_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBlZGFzcWxkZGhycXZid2RsemdlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMwNjE3ODIsImV4cCI6MjA2ODYzNzc4Mn0.G2zTfu-4vVO7R86rU8KJ2xKrjGOCLus2Clm0ZobZYBM',
-  PROJECT_ID: 'pedasqlddhrqvbwdlzge'
+  URL: process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL || '',
+  ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY || '',
+  PROJECT_ID: process.env.SUPABASE_PROJECT_ID || ''
 };
+
+// Validate required environment variables
+if (!SUPABASE_CONFIG.URL || !SUPABASE_CONFIG.ANON_KEY) {
+  console.error('❌ ERROR: Missing Supabase configuration!');
+  console.error('Please set the following environment variables:');
+  console.error('  - NEXT_PUBLIC_SUPABASE_URL');
+  console.error('  - NEXT_PUBLIC_SUPABASE_ANON_KEY');
+  console.error('  - SUPABASE_PROJECT_ID (optional)');
+  process.exit(1);
+}
 
 class SupabaseAuthSetup {
   constructor() {

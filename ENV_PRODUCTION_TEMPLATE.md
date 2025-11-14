@@ -16,8 +16,9 @@ Create a new file named `.env.production` in your project root with the followin
 # =============================================================================
 
 # SUPABASE CONFIGURATION (Primary Authentication Service)
-NEXT_PUBLIC_SUPABASE_URL=https://pedasqlddhrqvbwdlzge.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBlZGFzcWxkZGhycXZid2RsemdlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMwNjE3ODIsImV4cCI6MjA2ODYzNzc4Mn0.G2zTfu-4vVO7R86rU8KJ2xKrjGOCLus2Clm0ZobZYBM
+# ⚠️ SECURITY: Replace with your actual Supabase credentials from Supabase Dashboard
+NEXT_PUBLIC_SUPABASE_URL=https://YOUR_PROJECT_ID.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key_here
 
 # CRITICAL: PRODUCTION DOMAIN CONFIGURATION
 NEXT_PUBLIC_PRODUCTION_DOMAIN=https://belugagithubv2025machineloopscorpsf-gold.vercel.app
@@ -75,7 +76,7 @@ AUTH_CIRCUIT_BREAKER_THRESHOLD=5
 
 ### **Step 2: Get Service Role Key**
 1. Go to [Supabase Dashboard](https://supabase.com/dashboard)
-2. Select your project: `pedasqlddhrqvbwdlzge`
+2. Select your project: `YOUR_PROJECT_ID`
 3. Go to **Settings > API**
 4. Copy the **service_role** key (secret key)
 5. Replace `your_service_role_key_here` with the actual key
