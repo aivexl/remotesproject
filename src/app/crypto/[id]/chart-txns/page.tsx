@@ -1,5 +1,4 @@
 import DexScreenerChartTxnsLayout from '@/components/DexScreenerChartTxnsLayout';
-import CryptoHeader from '@/components/CryptoHeader';
 
 interface ChartTxnsPageProps {
   params: Promise<{ id: string }>;
@@ -77,10 +76,6 @@ export default async function ChartTxnsPage({ params }: ChartTxnsPageProps) {
   
   return (
     <div className="min-h-screen bg-dex-bg-primary flex flex-col">
-      <CryptoHeader 
-        coinData={mergedCoinData}
-        detailedData={coinData}
-      />
       <div className="flex-1 p-4">
         <DexScreenerChartTxnsLayout
           coinData={coinData}

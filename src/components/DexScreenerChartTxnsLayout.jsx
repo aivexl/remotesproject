@@ -6,7 +6,6 @@ import DexScreenerTokenTransactions from "./DexScreenerTokenTransactions";
 import DexScreenerTokenHolders from "./DexScreenerTokenHolders";
 import DexScreenerTokenTabs from "./DexScreenerTokenTabs";
 import TokenSidebar from "./token/TokenSidebar";
-import CryptoDetailInfo from "./CryptoDetailInfo";
 import { fetchDetailedCoinData, createPairData } from "../utils/coinDataUtils";
 
 const DexScreenerChartTxnsLayout = ({ coinData, symbol }) => {
@@ -209,15 +208,19 @@ const DexScreenerChartTxnsLayout = ({ coinData, symbol }) => {
       {/* Content Section */}
       <div className="flex-1 bg-dex-bg-primary p-4">
         {activeTab === "information" && (
-          <CryptoDetailInfo
-            coinData={coinData}
-            detailedData={detailedCoinData}
-            showOverview={false}
-            showPerformance={false}
-            showSupplyInfo={false}
-            showAbout={true}
-            className=""
-          />
+          <div className="text-dex-text-secondary">
+            <h3 className="text-xl font-semibold mb-4 text-dex-text-primary">Coin Information</h3>
+            {coinData && (
+              <div className="space-y-4">
+                {coinData.description && (
+                  <div>
+                    <h4 className="font-medium mb-2 text-dex-text-primary">About</h4>
+                    <p className="text-sm" dangerouslySetInnerHTML={{ __html: coinData.description?.en || coinData.description || 'No description available' }} />
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
         )}
         {activeTab === "holders" && !isSolana && (
           <DexScreenerTokenHolders

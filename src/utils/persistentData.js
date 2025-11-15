@@ -1,12 +1,12 @@
 // Data management dengan localStorage untuk persistence
 import { useState, useEffect } from 'react';
-import { 
-  exchangesData as defaultExchangesData, 
-  airdropData as defaultAirdropData, 
-  icoIdoData as defaultIcoIdoData, 
-  fundraisingData as defaultFundraisingData, 
-  web3GlossaryData as defaultWeb3GlossaryData 
-} from '@/data/cryptoData';
+
+// Default empty data arrays
+const defaultExchangesData = [];
+const defaultAirdropData = [];
+const defaultIcoIdoData = [];
+const defaultFundraisingData = [];
+const defaultWeb3GlossaryData = [];
 
 // Keys untuk localStorage
 const STORAGE_KEYS = {
