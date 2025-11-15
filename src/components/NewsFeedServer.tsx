@@ -47,7 +47,7 @@ const NewsFeedServer = React.memo(({ articles = [], noTitle = false, initialCoun
   if (!sortedArticles.length) {
     return (
       <div className="bg-duniacrypto-panel rounded-lg shadow p-4">
-        <div className="text-center text-gray-400">
+        <div className="text-center text-gray-600">
           <p>Tidak ada artikel tersedia</p>
         </div>
       </div>
@@ -57,7 +57,7 @@ const NewsFeedServer = React.memo(({ articles = [], noTitle = false, initialCoun
   return (
     <div className="bg-duniacrypto-panel rounded-lg shadow p-4">
       {!noTitle && (
-        <h2 className="text-xl font-bold mb-6 text-white">Berita Terbaru</h2>
+        <h2 className="text-xl font-bold mb-6 text-gray-900">Berita Terbaru</h2>
       )}
       
       <div className="space-y-4">
@@ -65,7 +65,7 @@ const NewsFeedServer = React.memo(({ articles = [], noTitle = false, initialCoun
           <a
             key={article._id}
             href={`/${article.category === 'newsroom' ? 'newsroom' : 'academy'}/${article.slug.current}`}
-            className="block group hover:bg-white/10 rounded-lg p-4 transition cursor-pointer no-underline hover:no-underline focus:no-underline active:no-underline border border-gray-700 hover:border-gray-600"
+            className="block group hover:bg-gray-50 rounded-lg p-4 transition cursor-pointer no-underline hover:no-underline focus:no-underline active:no-underline border border-gray-200 hover:border-gray-300"
           >
             <div className="flex gap-4">
               <img
@@ -78,7 +78,7 @@ const NewsFeedServer = React.memo(({ articles = [], noTitle = false, initialCoun
                 }}
               />
               <div className="flex-1 min-w-0">
-                <h3 className="text-white font-semibold text-lg line-clamp-2 group-hover:text-blue-300 transition mb-2 leading-tight">
+                <h3 className="text-gray-900 font-semibold text-lg line-clamp-2 group-hover:text-blue-600 transition mb-2 leading-tight">
                   {article.title}
                 </h3>
                 <div className="mb-2">
@@ -100,7 +100,7 @@ const NewsFeedServer = React.memo(({ articles = [], noTitle = false, initialCoun
                     )}
                   </div>
                   {/* Date below label */}
-                  <div className="text-xs text-gray-400">
+                  <div className="text-xs text-gray-600">
                     {isClient ? dayjs(article.publishedAt).fromNow() : 'Loading...'}
                   </div>
                 </div>

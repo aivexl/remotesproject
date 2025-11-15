@@ -8,9 +8,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        'duniacrypto-bg': '#0e1118',
-        'duniacrypto-bg-darker': '#0a0d12',  // Darker than panel (#141722)
-        'duniacrypto-panel': '#141722',
+        'duniacrypto-bg': '#ffffff',
+        'duniacrypto-bg-darker': '#f8f9fa',
+        'duniacrypto-panel': '#ffffff',
         'duniacrypto-green': '#16c784',
         'duniacrypto-red': '#ea3943',
         'duniacrypto-blue': '#4878ff',

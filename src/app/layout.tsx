@@ -98,6 +98,7 @@ export default function RootLayout({
       <head>
         {/* Google Tag Manager */}
         <script
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -139,6 +140,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         {/* Structured Data: WebSite with Sitelinks Search Box */}
         <script
           type="application/ld+json"
+          suppressHydrationWarning
           // JSON-LD for WebSite schema enabling Sitelinks Search Box in Google
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
@@ -160,6 +162,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         {/* Structured Data: Organization */}
         <script
           type="application/ld+json"
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
@@ -194,6 +197,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
         {/* Error hardening for noisy browser extensions and SW handling */}
         <script
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{
             __html: `
               // Handle browser extension errors - suppress noisy extension errors
@@ -290,7 +294,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-duniacrypto-bg-darker`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white`}
       >
         {/* Google Tag Manager (noscript) */}
         <noscript>
@@ -310,7 +314,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <ConsoleSilencer />
                 <PerformanceMonitor />
                 <Navbar />
-                <main className="flex-1 xl:ml-20">
+                <main className="flex-1">
                   {children}
                 </main>
                 <Footer />

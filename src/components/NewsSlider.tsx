@@ -98,11 +98,11 @@ const NewsSlider: React.FC<NewsSliderProps> = ({ articles = [] }) => {
 
   if (sliderArticles.length === 0) {
     return (
-      <div className="bg-duniacrypto-panel rounded-lg shadow p-4 text-center text-gray-400" style={{height: '400px'}}>
+      <div className="bg-duniacrypto-panel rounded-lg shadow p-4 text-center text-gray-600" style={{height: '500px'}}>
         <div className="flex items-center justify-center h-full">
           <div>
-            <h3 className="text-xl font-semibold mb-2">Belum ada artikel</h3>
-            <p className="text-sm">Artikel Academy dan News akan muncul di sini setelah ditambahkan melalui Sanity Studio.</p>
+            <h3 className="text-xl font-semibold mb-2 text-gray-900">Belum ada artikel</h3>
+            <p className="text-sm text-gray-700">Artikel Academy dan News akan muncul di sini setelah ditambahkan melalui Sanity Studio.</p>
           </div>
         </div>
       </div>
@@ -111,8 +111,8 @@ const NewsSlider: React.FC<NewsSliderProps> = ({ articles = [] }) => {
 
   return (
     <div 
-      className="relative bg-duniacrypto-panel rounded-lg shadow p-0 overflow-hidden w-full max-w-full mb-6" 
-      style={{height: '400px'}}
+      className="relative bg-duniacrypto-panel rounded-lg shadow overflow-hidden w-full max-w-full mt-6 sm:mt-8 md:mt-0 mb-6" 
+      style={{height: '500px'}}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -138,44 +138,19 @@ const NewsSlider: React.FC<NewsSliderProps> = ({ articles = [] }) => {
         {sliderArticles.map((item) => (
           <div
             key={item.id}
-            className="flex-shrink-0 w-full h-full flex flex-col items-center justify-center relative"
-            style={{ minWidth: '100%', maxWidth: '100%', height: '400px' }}
+            className="flex-shrink-0 w-full h-full relative"
+            style={{ minWidth: '100%', maxWidth: '100%', height: '500px' }}
           >
             <a href={item.url} className="block w-full h-full group">
               <img
                 src={item.image}
                 alt={item.title}
-                className="w-full h-full object-cover rounded-t-lg bg-black/30 transition-transform group-hover:scale-105"
-                style={{margin: 0, padding: 0, width: '100%', height: '100%'}}
+                className="w-full h-full object-cover transition-transform group-hover:scale-105"
+                style={{margin: 0, padding: 0, width: '100%', height: '100%', display: 'block'}}
                 onError={(event: React.SyntheticEvent<HTMLImageElement, Event>) => {
                   event.currentTarget.src = PLACEHOLDER;
                 }}
               />
-              <div className="absolute top-4 left-4">
-                <span className={`inline-block px-3 py-1.5 rounded-full text-white font-bold text-sm tracking-wide shadow-lg ${
-                  item.category === 'newsroom' ? 'bg-blue-700' : 'bg-blue-500'
-                }`}>
-                  {item.category === 'newsroom' ? 'News' : 'Academy'}
-                </span>
-              </div>
-              <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-4 rounded-b-lg">
-                {/* Coin Logos Above Title */}
-                {item.coinTags && item.coinTags.length > 0 && (
-                  <div className="mb-2">
-                    <CoinLogosOnly 
-                      coinTags={item.coinTags} 
-                      size="sm"
-                      maxDisplay={4}
-                      className="justify-start"
-                      disableLinks={true}
-                    />
-                  </div>
-                )}
-                
-                <div className="text-lg md:text-2xl font-bold text-white line-clamp-2 drop-shadow-lg mb-8">
-                  {item.title}
-                </div>
-              </div>
             </a>
           </div>
         ))}

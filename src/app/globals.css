@@ -23,14 +23,14 @@
 }
 
 :root {
-  --color-bg-primary: #0e1118;
-  --color-bg-secondary: #141722;
-  --color-bg-tertiary: #1e2330;
-  --color-bg-highlight: #252b3b;
-  --color-text-primary: #fff;
-  --color-text-secondary: #8a94a8;
-  --color-text-tertiary: #636d83;
-  --color-border: #2c3344;
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f8f9fa;
+  --color-bg-tertiary: #e9ecef;
+  --color-bg-highlight: #dee2e6;
+  --color-text-primary: #212529;
+  --color-text-secondary: #495057;
+  --color-text-tertiary: #6c757d;
+  --color-border: #dee2e6;
   --color-green: #16c784;
   --color-red: #ea3943;
   --color-blue: #4878ff;
@@ -41,8 +41,8 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', Arial, sans-serif;
-  background: #0a0d12;  /* Darker than Daily Recap panel (#141722) */
-  color: #fff;
+  background: #ffffff;
+  color: #212529;
   /* Performance optimizations */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -55,10 +55,10 @@ html, body {
   box-sizing: border-box;
 }
 
-/* Custom Dark Theme Scrollbar - Global */
+/* Custom Light Theme Scrollbar - Global */
 * {
   scrollbar-width: thin; /* Firefox */
-  scrollbar-color: #374151 #1f2937; /* Firefox: thumb track */
+  scrollbar-color: #adb5bd #e9ecef; /* Firefox: thumb track */
 }
 
 /* Webkit browsers (Chrome, Safari, Edge) */
@@ -68,32 +68,32 @@ html, body {
 }
 
 *::-webkit-scrollbar-track {
-  background: #1f2937; /* Dark gray track */
+  background: #e9ecef; /* Light gray track */
   border-radius: 3px;
 }
 
 *::-webkit-scrollbar-thumb {
-  background: #374151; /* Medium gray thumb */
+  background: #adb5bd; /* Medium gray thumb */
   border-radius: 3px;
-  border: 1px solid #1f2937;
+  border: 1px solid #e9ecef;
 }
 
 *::-webkit-scrollbar-thumb:hover {
-  background: #4b5563; /* Lighter gray on hover */
+  background: #868e96; /* Darker gray on hover */
 }
 
 *::-webkit-scrollbar-thumb:active {
-  background: #6b7280; /* Even lighter on active */
+  background: #495057; /* Even darker on active */
 }
 
 *::-webkit-scrollbar-corner {
-  background: #1f2937;
+  background: #e9ecef;
 }
 
 /* Custom scrollbar utility class for special cases */
 .custom-scrollbar-thin {
   scrollbar-width: thin;
-  scrollbar-color: #374151 #1f2937;
+  scrollbar-color: #adb5bd #e9ecef;
 }
 
 .custom-scrollbar-thin::-webkit-scrollbar {
@@ -664,49 +664,22 @@ a:hover {
   margin: 0 auto;
 }
 
-/* Desktop Logo Positioning - Ensure visibility in production builds */
-:root {
-  --sidebar-width: 80px;
-  --logo-left-position: calc(var(--sidebar-width) + 0px);
-}
-
+/* Desktop Logo Positioning - Proposional, sejajar dengan konten max-w-7xl */
 .desktop-logo {
   position: fixed !important;
-  left: var(--logo-left-position) !important;
+  left: max(1.5rem, calc((100vw - 80rem) / 2 + 1.5rem)) !important;
   top: 1rem !important;
-  z-index: 9999 !important;
-  pointer-events: auto !important;
-}
-
-/* Force logo visibility in all build environments */
-.desktop-logo * {
-  pointer-events: auto !important;
-}
-
-/* Additional logo visibility rules for production builds */
-.desktop-logo {
-  position: fixed !important;
-  left: var(--logo-left-position) !important;
-  top: 1rem !important;
-  z-index: 9999 !important;
+  z-index: 99999 !important;
   pointer-events: auto !important;
   transform: translateZ(0) !important;
   will-change: transform !important;
 }
 
-/* Ensure logo is above all other elements */
-.desktop-logo,
+/* Force logo visibility in all build environments */
 .desktop-logo * {
-  z-index: 9999 !important;
+  pointer-events: auto !important;
   position: relative !important;
-}
-
-/* Force logo container to be above sidebar and navbar */
-.desktop-logo {
-  z-index: 99999 !important;
-  position: fixed !important;
-  left: 80px !important;
-  top: 16px !important;
+  z-index: 9999 !important;
 }
 
 /* Crypto Ticker Scroll Animation */

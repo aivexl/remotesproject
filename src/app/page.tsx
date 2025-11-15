@@ -71,3 +71,4 @@ export default async function Home() {
 
   return <HomeClient articles={articles as SanityArticleWithImage[]} />;
 }
+

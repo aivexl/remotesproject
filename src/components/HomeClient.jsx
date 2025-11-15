@@ -1,29 +1,9 @@
 "use client";
 
-import React, { Suspense } from "react";
-import dynamic from "next/dynamic";
-import CryptoTicker from "./CryptoTicker";
+import React from "react";
 import NewsSlider from "./NewsSlider";
 import NewsFeedServer from "./NewsFeedServer";
-import { HomepageCryptoProvider } from "./HomepageCryptoProvider";
 import type { SanityArticleWithImage } from '../utils/sanity';
-
-// Dynamic imports for better code splitting - only import what's actually used
-const BtcEthPercentageChart = dynamic(() => import("./BtcEthPercentageChart"), {
-  loading: () => <div className="bg-duniacrypto-panel rounded-lg border border-gray-700 p-4 animate-pulse h-64" />,
-});
-
-const SubscribeContainer = dynamic(() => import("./SubscribeContainer"), {
-  loading: () => <div className="bg-duniacrypto-panel rounded-lg border border-gray-700 p-4 animate-pulse h-32" />,
-});
-
-const Top10MarketCap = dynamic(() => import("./Top10MarketCap"), {
-  loading: () => <div className="bg-duniacrypto-panel rounded-lg border border-gray-700 p-4 animate-pulse h-96" />,
-});
-
-const Top100Trending = dynamic(() => import("./Top100Trending"), {
-  loading: () => <div className="bg-duniacrypto-panel rounded-lg border border-gray-700 p-4 animate-pulse h-96" />,
-});
 
 
 interface HomeClientProps {
@@ -32,12 +12,10 @@ interface HomeClientProps {
 
 export default function HomeClient({ articles = [] }: HomeClientProps) {
   return (
-    <HomepageCryptoProvider>
-      {/* Ticker */}
-      <CryptoTicker />
+    <>
       {/* Main Layout */}
-      <main className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 py-4 md:py-6 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6 flex-1 w-full tablet-container">
-        <section className="col-span-1 lg:col-span-2 space-y-4 md:gap-6">
+      <main className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 py-4 md:py-6 flex-1 w-full tablet-container">
+        <section className="space-y-4 md:gap-6">
           {/* Prioritas slider: showInSlider > featured > terbaru, maksimal 8, urutan: showInSlider dulu */}
           {(() => {
             let sliderArticles = [];
@@ -57,21 +35,7 @@ export default function HomeClient({ articles = [] }: HomeClientProps) {
           })()}
           <NewsFeedServer articles={articles} />
         </section>
-        <aside className="col-span-1 space-y-4 md:gap-6">
-          <Suspense fallback={<div className="bg-duniacrypto-panel rounded-lg border border-gray-700 p-4 animate-pulse h-64" />}>
-            <BtcEthPercentageChart />
-          </Suspense>
-          <Suspense fallback={<div className="bg-duniacrypto-panel rounded-lg border border-gray-700 p-4 animate-pulse h-32" />}>
-            <SubscribeContainer />
-          </Suspense>
-          <Suspense fallback={<div className="bg-duniacrypto-panel rounded-lg border border-gray-700 p-4 animate-pulse h-96" />}>
-            <Top10MarketCap />
-          </Suspense>
-          <Suspense fallback={<div className="bg-duniacrypto-panel rounded-lg border border-gray-700 p-4 animate-pulse h-96" />}>
-            <Top100Trending />
-          </Suspense>
-        </aside>
       </main>
-    </HomepageCryptoProvider>
+    </>
   );
 } 

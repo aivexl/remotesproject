@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import CryptoTicker from './CryptoTicker';
 import CryptoTable from './CryptoTable';
 import SubscribeContainer from './SubscribeContainer';
 import NewsFeed from './NewsFeed';
@@ -93,8 +92,6 @@ export default function App() {
         </header>
         <Popup open={popup==='academy'} onClose={()=>setPopup('')}>Academy Coming Soon</Popup>
         <Popup open={popup==='kamus'} onClose={()=>setPopup('')}>Kamus WEB3 Coming Soon</Popup>
-        {/* Ticker */}
-        <CryptoTicker />
         {/* Main Layout */}
         <main className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 py-4 md:py-6 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 flex-1 w-full">
           <section className="col-span-1 xl:col-span-2 space-y-4 md:space-y-6">
